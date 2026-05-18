@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vrss-agent-template-builder
+  ai:
+    anthropic:
+      api-key: x123
+    openai:
+      api-key: ${OPENAI_API_KEY}
+
+openai:
+  rate-limiter:
+    max-concurrent-requests: 3
+
+logging:
+  level:
+    org.springframework.ai.mcp: DEBUG
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: TRACE
