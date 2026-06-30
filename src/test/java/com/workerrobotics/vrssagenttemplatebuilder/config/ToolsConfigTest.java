@@ -2,6 +2,7 @@ package com.workerrobotics.vrssagenttemplatebuilder.config;
 
 import com.workerrobotics.vrssagenttemplatebuilder.service.DogFactsService;
 import com.workerrobotics.vrssagenttemplatebuilder.tools.DogFactsTool;
+import com.workerrobotics.vrssagenttemplatebuilder.tools.PrintDirectionTool;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -17,12 +18,13 @@ class ToolsConfigTest {
     private DogFactsService dogFactsService;
 
     @Test
-    void toolCallbackProvider_registersDogFactsTool() {
+    void toolCallbackProvider_registersBothTools() {
         var dogFactsTool = new DogFactsTool(dogFactsService);
+        var printDirectionTool = new PrintDirectionTool();
         var config = new ToolsConfig();
-        var provider = config.toolCallbackProvider(dogFactsTool);
+        var provider = config.toolCallbackProvider(dogFactsTool, printDirectionTool);
         assertNotNull(provider);
         assertNotNull(provider.getToolCallbacks());
-        assertEquals(1, provider.getToolCallbacks().length);
+        assertEquals(2, provider.getToolCallbacks().length);
     }
 }
