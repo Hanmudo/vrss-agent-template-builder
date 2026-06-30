@@ -1,0 +1,7 @@
+mistralai
+silero-vad
+torch
+numpy
+sounddevice
+soundfile
+requests
